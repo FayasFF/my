@@ -216,7 +216,7 @@
 })()
 
 $("#submitform").submit((e)=>{
-  if(tex1&& mai1&& ph1){
+  if(Per()&& mal()&& tel()){
       
   
      e.preventDefault()
@@ -225,9 +225,10 @@ $("#submitform").submit((e)=>{
          data:$("#submitform").serialize(),
          method:"post",
          success:function (response){
-             alert("Form submitted successfully")
+          Swal.fire({ 
+            html: "Form submited"  
+          });
              window.location.reload()
-             window.location.href="https://fayasff.github.io/port/?name=fayas&email=1%40gmail.com&phone=908sdfvb&subject="
          },
          error:function (err){
              alert("Something Error")
@@ -235,64 +236,64 @@ $("#submitform").submit((e)=>{
          }
      })
  }else{
-     alert("Fill up Correctly")
+    per();
+    mal();
+    tel();
  }
  })
-var tex1
+
 function Per(){
- var username = document.getElementById('name').value
- var check
+ var username = $('#name').val()
  var pattern=/^[a-zA-Z-()]+(\s+[-a-zA-Z-()]+)*$/
  if(username==""){
-    check="Enter the Name";
-     tex1=false
+  $('#peer').html("Enter The Name");
+     return false
  }else if(username.match(pattern)){
-     check=""
-    tex1=true
+  $('#peer').html("");
+    return true
  }else{
-     check="Please use Alphabets "
-   tex1=false
+  $('#peer').html("please use Character");
+   return false
  }
 
- document.getElementById('peer').innerHTML=check
+ 
 }
-var mai1
+
 function mal(){
- var email = document.getElementById('email').value
- var check
+ var email = $('#email').val()
  var pattern=/^[^]+@[^]+\.[a-z]{2,3}$/
  if(email==""){
-    check="Enter the E-mail";
-    mai1=false
+  $('#maal').html("Enter Valid Email");
+    return false
  }else if(email.match(pattern)){
-     check=""
-     mai1=true
+  $('#maal').html("");
+    return true
  }else{
-     check="Enter correct Email"
-     mai1=false
+  $('#maal').html("Enter Correct Email");
+    return false
  }
 
- document.getElementById('maal').innerHTML=check
+ 
 }
-var ph1
+
 function tel(){
- var phone = document.getElementById('phone').value
- var check
+ var phone =$('#phone').val()
  var pattern=/^\d{10}$/
  var paattern=/^[a-zA-Z-()]+(\s+[-a-zA-Z-()]+)*$/
  if(phone==""){
-    check="Enter valid number";
-    ph1=false
+   $('#teel').html("Enter valid number");
+    return false
  }else if(phone.match(pattern)){
-     check=""
-     ph1=true
+  $('#teel').html("");
+     return true
  }else if(phone.match(paattern)){
-     check="Don't Enter character"
-     ph1=false
+  $('#teel').html("Don't Enter Char");
+     return false
  }else{
-     check="Please Enter correct 10 number"
-     ph1=false
+  $('#teel').html("Enter 10 Number only");
+     return false
  }
 
- document.getElementById('teel').innerHTML=check
+
 }
+
